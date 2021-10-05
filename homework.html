@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+    <h1>convert shekel to all kinds o money</h1>
+    shekel:<input  type="text" id="shekel" >
+    <button id="btn">convert</button>
+    <div class="answer"></div>
+<p id="answer">in euro is:</p>
+<p id="answer1">in dollar is:</p>
+<p id="answer2">in yen is:</p>
+<p id="answer3"> in pound sterling is:</p>
+<p id="answer4">in rand is:</p>
+<p id="answer5">CHF:</p>
+<p id="answer6">JOD:</p>
+1 shekelX0.26=euro
+<!-- withxmlhttprequest -->
+<!-- <script>
+    let b=document.getElementById("btn")
+    let money=document.getElementById("shekel")
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+b.addEventListener("click",function(){
+    let final=money.value*0.25
+    console.log(final);
+    document.getElementById("answer").innerHTML="the format is " + (final)
+
+})
+}};
+  const api_Key=`6ddf1dad32823ca40804f72535c8353d&format=1`
+    const url=`http://api.exchangeratesapi.io/v1/latest?access_key=${api_Key}`
+    xhttp.open("GET", url);
+     xhttp.send(); -->
+    <!-- </script> -->
+ <!-- axious -->
+ <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+ <script>
+ const api_Key=`6ddf1dad32823ca40804f72535c8353d&format=1`
+const url=`http://api.exchangeratesapi.io/v1/latest?access_key=${api_Key}`
+
+// Make a request for a user with a given ID
+let b=document.getElementById("btn")
+let money=document.getElementById("shekel")
+axios.get(url)
+.then(function (response) {
+    // handle success
+    if(response.status===200){
+        b.addEventListener("click",function(){
+    let shekel=money.value*0.27
+    let dollar=money.value*0.31
+    let yen=money.value*34.47
+    let gbp=money.value*0.23
+    let rand=money.value*4.64
+    let chp=money.value*0.29
+    let jod=money.value*0.22;
+    // console.log(final);
+    document.getElementById("answer").innerHTML+= (shekel)
+    document.getElementById("answer1").innerHTML+= (dollar)
+    document.getElementById("answer2").innerHTML+= (yen)
+    document.getElementById("answer3").innerHTML+= (gbp)
+    document.getElementById("answer4").innerHTML+= (rand)
+    document.getElementById("answer5").innerHTML+= (chp)
+    document.getElementById("answer6").innerHTML+= (jod)
+})
+    }
+})
+.catch(function (error) {
+    // handle error
+    console.log("got error");
+    console.log(error);
+  })
+</script>
+</body>
+</html>
